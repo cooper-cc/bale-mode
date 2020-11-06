@@ -11,3 +11,9 @@ fs.copySync("./lua/computer", "./dist/computer");
 fs.copySync("./lua/tablet", "./dist/tablet");
 fs.copySync("./lua/turtle", "./dist/turtle");
 
+for (let type of ["computer", "tablet", "turtle"]) {
+	if (fs.existsSync(`./dist/${type}/startup.lua`)) {
+		fs.moveSync(`./dist/${type}/startup.lua`, `./dist/${type}/startup`);
+	}
+}
+
