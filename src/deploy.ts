@@ -2,11 +2,17 @@ import * as fs from "fs-extra";
 import { execSync } from "child_process";
 
 type Config = {
+	testing: number[],
 	destination: string,
 	ids: {computer: number[], tablet: number[], turtle: number[]}
 };
 
+function isActive(id: number) {
+	return config.testing.length === 0 || config.testing.includes(id);
+}
+
 function setupID(type: string, id: number) {
+	if (!isActive(id)) return;
 	fs.copySync(`dist/${type}`, `dist/final/${id}`);
 }
 
@@ -23,6 +29,7 @@ for (let id of config.ids.turtle) setupID("turtle", id);
 
 let final = fs.readdirSync("dist/final");
 for (let id of final) {
+	if (!isActive(parseInt(id))) continue;
 	console.log("Sending id: " + id);
 	execSync(`scp -r dist/final/${id} ${config.destination}`);
 }

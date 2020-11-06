@@ -10,7 +10,7 @@
 		"build": "tsc",
 		"compile": "node ./out/compile.js",
 		"deploy": "node ./out/deploy.js",
-		"start": "yarn build;yarn compile"
+		"start": "yarn compile;yarn deploy"
 	},
 	"dependencies": {
 		"@types/fs-extra": "^9.0.3",
