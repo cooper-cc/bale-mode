@@ -8,9 +8,9 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "tsc",
-		"start": "node ./out/index.js",
-		"compile": "echo NYI",
-		"push": "echo NYI"
+		"compile": "node ./out/compile.js",
+		"deploy": "node ./out/deploy.js",
+		"start": "yarn build;yarn compile"
 	},
 	"dependencies": {
 		"@types/fs-extra": "^9.0.3",
