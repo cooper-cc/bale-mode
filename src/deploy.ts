@@ -5,7 +5,7 @@ type Config = {
 	ids: {computer: number[], tablet: number[], turtle: number[]}
 };
 
-const config: Config = fs.readJsonSync("config.json");
+const config: Config = fs.readJsonSync("lua/config.json");
 
 console.log(config);
 
