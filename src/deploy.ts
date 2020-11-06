@@ -13,7 +13,7 @@ function isActive(id: number) {
 
 function setupID(type: string, id: number) {
 	if (!isActive(id)) return;
-	fs.copySync(`dist/${type}`, `dist/final/${id}`);
+	fs.copySync(`dist/${type}`, `computer/${id}`);
 }
 
 const config: Config = fs.readJsonSync("lua/config.json");
@@ -22,17 +22,11 @@ if (config.destination === "") {
 	process.exit();
 }
 
-fs.ensureDir("dist/final");
+fs.ensureDir("computer");
 for (let id of config.ids.computer) setupID("computer", id);
 for (let id of config.ids.tablet) setupID("tablet", id);
 for (let id of config.ids.turtle) setupID("turtle", id);
+execSync(`scp -r computer ${config.destination}`);
 
-let final = fs.readdirSync("dist/final");
-for (let id of final) {
-	if (!isActive(parseInt(id))) continue;
-	console.log("Sending id: " + id);
-	execSync(`scp -r dist/final/${id} ${config.destination}`);
-}
-
-fs.rmdirSync("dist/final", {recursive: true});
+fs.rmdirSync("computer", {recursive: true});
 
