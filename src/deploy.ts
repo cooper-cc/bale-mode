@@ -1,5 +1,5 @@
 import * as fs from "fs-extra";
-import { execSync } from "child_process";
+import {execSync} from "child_process";
 
 type Config = {
 	testing: number[],
