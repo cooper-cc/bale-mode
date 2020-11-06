@@ -1,5 +1,5 @@
 import * as fs from "fs-extra";
-import { exec } from "child_process";
+import { execSync } from "child_process";
 
 type Config = {
 	destination: string,
@@ -24,7 +24,7 @@ for (let id of config.ids.turtle) setupID("turtle", id);
 let final = fs.readdirSync("dist/final");
 for (let id of final) {
 	console.log("Sending id: " + id);
-	exec(`scp -r dist/final/${id} ${config.destination}`);
+	execSync(`scp -r dist/final/${id} ${config.destination}`);
 }
 
 fs.rmdirSync("dist/final", {recursive: true});
