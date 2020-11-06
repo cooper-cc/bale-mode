@@ -18,22 +18,22 @@ turtle.data = {
 turtle.pos = {x=0, y=0, z=0}
 
 turtle.forward = function()
-	print("forward")
+	-- print("forward")
 	return turtle.prototype.forward()
 end
 
 turtle.back = function()
-	print("back")
+	-- print("back")
 	return turtle.prototype.back()
 end
 
 turtle.turnLeft = function()
-	print("left")
+	-- print("left")
 	return turtle.prototype.turnLeft()
 end
 
 turtle.turnRight = function()
-	print("right")
+	-- print("right")
 	return turtle.prototype.turnRight()
 end
 
