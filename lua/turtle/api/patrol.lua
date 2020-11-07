@@ -17,6 +17,7 @@ function patrol(forward, right, callback)
 		end
 		if r ~= right then turn(r, callback) end
 	end
+	callback()
 	if right % 2 == 1 then
 		for i=1, forward-1 do
 			turtle.back()
